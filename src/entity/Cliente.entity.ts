@@ -1,9 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from "typeorm"
+import { Processo } from "./Processo.entity"
 
 @Entity()
 export class Cliente {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id: number
 
     @Column()
@@ -11,6 +12,9 @@ export class Cliente {
 
     @Column()
     cnpj: string
+
+    @OneToMany(() => Processo, processo => processo.cliente)
+    processos: Processo[]
 
     @CreateDateColumn()
     criado_em: Date

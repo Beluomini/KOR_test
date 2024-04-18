@@ -1,10 +1,12 @@
 import { create } from "domain"
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToMany, JoinTable, ManyToOne } from "typeorm"
+import { Participante } from "./Participante.entity"
+import { Cliente } from "./Cliente.entity"
 
 @Entity()
 export class Processo {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id: number
 
     @Column()
@@ -31,8 +33,12 @@ export class Processo {
     @Column()
     estado: string
 
-    @Column()
-    cliente_id: number
+    @ManyToOne(() => Cliente, cliente => cliente.processos)
+    cliente: Cliente
+
+    @ManyToMany(() => Participante, participante => participante.processos)
+    @JoinTable()
+    participantes: Participante[]
 
     @CreateDateColumn()
     criado_em: Date

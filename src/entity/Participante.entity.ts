@@ -1,9 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToMany, JoinTable } from "typeorm"
+import { Processo } from "./Processo.entity"
 
 @Entity()
 export class Participante {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id: number
 
     @Column()
@@ -17,6 +18,11 @@ export class Participante {
 
     @Column()
     tipo: string
+
+    @ManyToMany(() => Processo, processo => processo.participantes)
+    @JoinTable()
+    processos: Processo[]
+
 
     @CreateDateColumn()
     criado_em: Date
