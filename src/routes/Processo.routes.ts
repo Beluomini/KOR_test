@@ -1,9 +1,10 @@
 import * as express from 'express';
+import { ProcessoController } from '../controllers/Processo.controller';
 
 const Router = express.Router();
 
-Router.get('/', (req, res) => {
-    res.send('Hello World');
+Router.post('/', (req, res) => {
+    ProcessoController.createProcesso(req, res);
 });
 
 export { Router as processoRouter };
