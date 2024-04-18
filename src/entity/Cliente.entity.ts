@@ -13,7 +13,7 @@ export class Cliente {
     @Column()
     cnpj: string
 
-    @OneToMany(() => Processo, processo => processo.cliente)
+    @OneToMany(() => Processo, processo => processo.cliente_id)
     processos: Processo[]
 
     @CreateDateColumn()

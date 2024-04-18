@@ -34,7 +34,7 @@ export class Processo {
     estado: string
 
     @ManyToOne(() => Cliente, cliente => cliente.processos)
-    cliente: Cliente
+    cliente_id: Cliente
 
     @ManyToMany(() => Participante, participante => participante.processos)
     @JoinTable()
