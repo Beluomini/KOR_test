@@ -4,10 +4,12 @@ import * as dotenv from "dotenv";
 import { Request, Response } from "express";
 import { processoRouter } from "./routes/Processo.routes";
 import "reflect-metadata";
+import { clienteRouter } from "./routes/Cliente.routes";
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use("/cliente", clienteRouter);
 app.use("/processo", processoRouter);
 
 app.get("*", (req: Request, res: Response) => {
