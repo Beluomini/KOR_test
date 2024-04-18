@@ -9,6 +9,12 @@ export class ClienteController {
         res.send(clientes);
     }
 
+    static async getClienteById(req: Request, res: Response) {
+        const { id } = req.params;
+        const cliente = await AppDataSource.getRepository("Cliente").findOneBy({"id": id});
+        res.send(cliente);
+    }
+
     static async createCliente(req: Request, res: Response) {
         const newCliente:ClienteDTO = {
             nome: req.body.nome,
@@ -18,6 +24,24 @@ export class ClienteController {
         const database = await AppDataSource.getRepository("Cliente").save(newCliente);
 
         res.send(newCliente);
+    }
+
+    static async updateCliente(req: Request, res: Response) {
+        const { id } = req.params;
+        const newCliente:ClienteDTO = {
+            nome: req.body.nome,
+            cnpj: req.body.cnpj
+        }
+
+        const database = await AppDataSource.getRepository("Cliente").update(id, newCliente);
+
+        res.send(newCliente);
+    }
+
+    static async deleteCliente(req: Request, res: Response) {
+        const { id } = req.params;
+        const database = await AppDataSource.getRepository("Cliente").delete(id);
+        res.send("Cliente deletado com sucesso!");
     }
 
 }
