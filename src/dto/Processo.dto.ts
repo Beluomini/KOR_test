@@ -1,3 +1,5 @@
+import { ParticipanteDTO } from "./Participante.dto"
+
 export class ProcessoDTO {
     id?: number
     numero: number
@@ -9,6 +11,7 @@ export class ProcessoDTO {
     cidade: string
     estado: string
     cliente_id: number
+    participantes?: ParticipanteDTO[]
     criado_em?: Date
     atualizado_em?: Date
     deletado_em?: Date

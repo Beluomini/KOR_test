@@ -14,15 +14,13 @@ export class ProcessoController {
             forum: req.body.forum,
             cidade: req.body.cidade,
             estado: req.body.estado,
-            cliente_id: req.body.cliente_id
+            cliente_id: req.body.cliente_id,
+            participantes: req.body.participantes
         }
 
         const database = await AppDataSource.getRepository("Processo").save(newProcesso);
 
         res.send(newProcesso);
     }
-
-    static async getProcessos(req: Request, res: Response) {
-        res.send("Hello World");
-    }
+    
 }
