@@ -1,4 +1,4 @@
-export class ProcessoDTO {
+export class ParticipanteDTO {
     id: number
     nome: string
     email: string

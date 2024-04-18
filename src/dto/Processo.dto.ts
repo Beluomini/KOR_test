@@ -1,5 +1,5 @@
 export class ProcessoDTO {
-    id: number
+    id?: number
     numero: number
     valor_causa: number
     tipo: string
@@ -9,4 +9,7 @@ export class ProcessoDTO {
     cidade: string
     estado: string
     cliente_id: number
+    criado_em?: Date
+    atualizado_em?: Date
+    deletado_em?: Date
 }
