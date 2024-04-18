@@ -1,8 +1,8 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { Cliente } from "./entity/Cliente.entity"
-import { Participante } from "./entity/Participante.entity"
-import { Processo } from "./entity/Processo.entity"
+import { Cliente } from "../entity/Cliente.entity"
+import { Participante } from "../entity/Participante.entity"
+import { Processo } from "../entity/Processo.entity"
 
 
 export const AppDataSource = new DataSource({

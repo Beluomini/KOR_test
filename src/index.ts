@@ -1,20 +1,24 @@
-import { AppDataSource } from "./data-source"
-import { User } from "./entity/Participante.entity"
+import { AppDataSource } from "./database/data-source";
+import * as express from "express";
+import * as dotenv from "dotenv";
+import { Request, Response } from "express";
+import { processoRouter } from "./routes/Processo.routes";
+import "reflect-metadata";
+dotenv.config();
 
-AppDataSource.initialize().then(async () => {
+const app = express();
+app.use(express.json());
+app.use("/processo", processoRouter);
 
-    console.log("Inserting a new user into the database...")
-    const user = new User()
-    user.firstName = "Timber"
-    user.lastName = "Saw"
-    user.age = 25
-    await AppDataSource.manager.save(user)
-    console.log("Saved a new user with id: " + user.id)
+app.get("*", (req: Request, res: Response) => {
+  res.status(505).json({ message: "Bad Request" });
+});
 
-    console.log("Loading users from the database...")
-    const users = await AppDataSource.manager.find(User)
-    console.log("Loaded users: ", users)
-
-    console.log("Here you can setup and run express / fastify / any other framework.")
-
-}).catch(error => console.log(error))
+AppDataSource.initialize()
+  .then(async () => {
+    app.listen(3000, () => {
+      console.log("Server is running on http://localhost:" + 3000);
+    });
+    console.log("Data Source has been initialized!");
+  })
+  .catch((error) => console.log(error));
