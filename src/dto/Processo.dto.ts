@@ -10,7 +10,7 @@ export class ProcessoDTO {
     forum: string
     cidade: string
     estado: string
-    cliente_id: number
+    cliente_id: string
     participantes?: ParticipanteDTO[]
     criado_em?: Date
     atualizado_em?: Date
