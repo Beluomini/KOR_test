@@ -5,12 +5,14 @@ import { Request, Response } from "express";
 import { processoRouter } from "./routes/Processo.routes";
 import "reflect-metadata";
 import { clienteRouter } from "./routes/Cliente.routes";
+import { particioanteRouter } from "./routes/Participante.routes";
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use("/cliente", clienteRouter);
 app.use("/processo", processoRouter);
+app.use("/participante", particioanteRouter);
 
 app.get("*", (req: Request, res: Response) => {
   res.status(505).json({ message: "Bad Request" });
