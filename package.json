@@ -1,7 +1,7 @@
 {
-   "name": "KOR_testAPI",
+   "name": "KOR_test",
    "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
+   "description": "Test project to start in KOR.",
    "type": "commonjs",
    "devDependencies": {
       "@types/node": "^16.11.10",
