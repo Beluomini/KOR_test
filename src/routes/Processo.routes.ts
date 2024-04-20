@@ -16,7 +16,7 @@ Router.get('/:id/participantes', (req, res) => {
 });
 
 Router.get('/todos', (req, res) => {
-ProcessoController.getAllProcessos(req, res);
+    ProcessoController.getAllProcessos(req, res);
 });
 
 Router.post('/', (req, res) => {
