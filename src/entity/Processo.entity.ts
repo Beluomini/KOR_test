@@ -37,7 +37,6 @@ export class Processo {
     cliente_id: Cliente
 
     @ManyToMany(() => Participante, participante => participante.processos)
-    @JoinTable()
     participantes: Participante[]
 
     @CreateDateColumn()

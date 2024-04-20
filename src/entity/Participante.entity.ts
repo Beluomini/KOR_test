@@ -20,6 +20,7 @@ export class Participante {
     tipo: string
 
     @ManyToMany(() => Processo, processo => processo.participantes)
+    @JoinTable()
     processos: Processo[]
 
     @CreateDateColumn()
