@@ -35,27 +35,16 @@ npm run dev
 
 ## Rotas
 
-### GET /processo
-Retorna todos os processos cadastrados, 
-podendo filtrá-los por cliente_id e participantes.
-Os filtros são opcionais e podem ser passados como query params.
+As rotas estão documentadas pelo Swagger na rota http://localhost:3000/api-docs/ (uma vez que o servidor está online)
 
-### GET /processo/:id/participantes
-Retorna todos os participantes de um processo específico
+Para as rotas foi usado o framework Node juntamente com express. O arquivo principal está em ./src/index.ts.
 
-### GET /processo/todos
-Retorna todos os processos cadastrados,
+Já as rotas estão no diretório ./src/routes e se dividem entre as entidades
+- Processos
+- Clientes
+- Participantes
 
-### GET /processo/:id
-Retorna um processo específico
+## Banco de dados
 
-### POST /processo
-Cria um novo processo
-
-### PUT /processo/:id
-Atualiza um processo
-
-### DELETE /processo/:id
-Deleta um processo
-
-
+Para o banco de dados foi usado postgreeSQL que está rodando em um container do docker.
+Para a criação do banco são criadas migrations ("./src/database/migrations"), que são criadas a partir do arquivo "./src/database/data-source.ts"

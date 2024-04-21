@@ -1,15 +1,22 @@
 import { AppDataSource } from "./database/data-source";
-import * as express from "express";
+import   express from "express";
 import * as dotenv from "dotenv";
 import { Request, Response } from "express";
 import { processoRouter } from "./routes/Processo.routes";
 import "reflect-metadata";
 import { clienteRouter } from "./routes/Cliente.routes";
 import { particioanteRouter } from "./routes/Participante.routes";
+
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "../swagger-output.json";
+
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use("/cliente", clienteRouter);
 app.use("/processo", processoRouter);
 app.use("/participante", particioanteRouter);
