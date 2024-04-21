@@ -30,7 +30,6 @@ export class ProcessoController {
     }
 
     static async getProcessoByClienteAndParticipante(req: Request, res: Response) {
-        
         try{
             const processos = await AppDataSource.getRepository("Processo").find({
                 relations: ["cliente_id", "participantes"]
@@ -84,7 +83,6 @@ export class ProcessoController {
         }catch(err){
             res.status(500).send({message: "Erro ao buscar e/ou filtrar processos!"});
         }
-
     }
 
     static async getProcessoParticipantes(req: Request, res: Response) {
@@ -101,11 +99,9 @@ export class ProcessoController {
         }catch(err){
             res.status(500).send({message: "Erro ao buscar participantes do processo!"});
         }
-
     }
 
     static async createProcesso(req: Request, res: Response) {
-        
         try{
             const newProcesso:ProcessoDTO = req.body;
 
@@ -118,11 +114,9 @@ export class ProcessoController {
         }catch(err){
             res.status(500).send({message: "Erro na criação de um novo processo"});
         }
-
     }
 
     static async updateProcesso(req: Request, res: Response) {
-
         const { id } = req.params;
         if(!id) {
             res.status(422).send({message: "Id não informado!"});
@@ -139,11 +133,9 @@ export class ProcessoController {
         }catch(err){
             res.status(500).send({message: "Erro ao atualizar processo!"});
         }
-
     }
 
     static async deleteProcesso(req: Request, res: Response) {
-
         const { id } = req.params;
         if(!id) {
             res.status(422).send({message: "Id não informado!"});
@@ -155,7 +147,6 @@ export class ProcessoController {
         }catch(err){
             res.status(500).send({message: "Erro ao deletar processo!"});
         }
-
     }
     
 }

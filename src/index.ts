@@ -21,8 +21,8 @@ app.get("*", (req: Request, res: Response) => {
 AppDataSource.initialize()
   .then(async () => {
     app.listen(3000, () => {
-      console.log("Server is running on http://localhost:" + 3000);
+      console.log("Servidor rodando em http://localhost:" + 3000);
     });
-    console.log("Data Source has been initialized!");
+    console.log("Banco de dados conectado!");
   })
   .catch((error) => console.log(error));
